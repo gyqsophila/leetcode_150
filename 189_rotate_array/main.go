@@ -15,6 +15,20 @@ func rotate(nums []int, k int) {
 
 func main() {
 	nums := []int{1, 2, 3, 4, 5, 6, 7}
-	rotate(nums, 3)
+	// rotate(nums, 3)
+	rotateByReverse(nums, 3)
 	fmt.Println(nums)
+}
+
+func rotateByReverse(nums []int, k int) {
+	k = k % len(nums)
+	reverse(nums)
+	reverse(nums[0:k])
+	reverse(nums[k:])
+}
+
+func reverse(nums []int) {
+	for i, n := 0, len(nums); i < n/2; i++ {
+		nums[i], nums[n-i-1] = nums[n-i-1], nums[i]
+	}
 }
